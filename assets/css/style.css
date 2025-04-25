@@ -1,3 +1,25 @@
 .nav-bg-color{
-    background-color: cornflowerblue;
+    background-color: #706D54;
+}
+
+.search-button{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.auth{
+    margin-left: 10px;
+}
+
+.registrationSection{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.footer-ft{
+    margin-bottom: 50%;
+}
+.loginSection{
+    margin-top: 10px;
+    margin-left: 10px;
 }

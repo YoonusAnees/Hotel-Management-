@@ -1,5 +1,9 @@
 <?php
-include('./db/dbconnect.php');
+include('../db/dbconnect.php');
+session_start();
+if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
+    header("location:login.php");
+  }
 
 
 ?>
@@ -12,7 +16,7 @@ include('./db/dbconnect.php');
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>serenity</title>
   </head>
   <body>
@@ -46,8 +50,7 @@ include('./db/dbconnect.php');
     </form>
 
     <div class="auth ">
-    <a href="./user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
-    <a href="./user/userRegistrstion.php"> <button type="button" class="btn btn-dark">Registration</button></a>
+    <a href="./user/logout.php"> <button type="button" class="btn btn-dark">Log out</button></a>
     </div>
   </div>
 </nav>

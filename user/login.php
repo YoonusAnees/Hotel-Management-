@@ -1,7 +1,35 @@
 <?php
 include("../db/dbconnect.php");
+session_start();
 
+if (isset($_POST['submit'])) {
+    $Email = $_POST['email'];
+    $Password = $_POST['Password'];
+
+    if (empty($Email) || empty($Password)) {
+        echo "Please fill in all fields.";
+        exit(); 
+    }
+
+    $userQuery = "SELECT * FROM user WHERE email='$Email' AND Password='$Password'";
+    $userResult = mysqli_query($connection, $userQuery);
+
+    if ($userResult && mysqli_num_rows($userResult) > 0) {
+        $userRow = mysqli_fetch_assoc($userResult);
+
+        // Set session variables
+        $_SESSION['email'] = $userRow['email'];
+        $_SESSION['Full_Name'] = $userRow['Full_Name'];
+        $_SESSION['id'] = $userRow['id'];
+
+        header("Location: main.php");
+        exit();
+    } else {
+        echo "Invalid email or password.";
+    }
+}
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -17,7 +45,7 @@ include("../db/dbconnect.php");
   </head>
   <body>
   <header>
-<nav class="navbar navbar-expand-lg navbar-light  nav-bg-color style="background-color: cornflowerblue;">
+<nav class="navbar navbar-expand-lg navbar-light  nav-bg-color ">
   <a class="navbar-brand" href="#">Serenity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -40,17 +68,54 @@ include("../db/dbconnect.php");
         <a class="nav-link " href="#">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
 
     <div class="auth">
-    <button type="button" class="btn btn-dark">Login</button>
+   <a href="./login.php"> <button type="button" class="btn btn-dark">Login</button></a>
+   <a href="./userRegistrstion.php"> <button type="button" class="btn btn-dark">Registration</button></a>
     </div>
   </div>
 </nav>
 </header>
+
+<section class="loginSection">
+<div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>User Login </h2>
+            <form action="" method="post">
+                
+               
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                <label for="Password" class="form-label">Password</label>
+                <input type="text" class="form-control" id="Password" name="Password" required>
+                </div>
+               
+                
+
+                
+                
+                <button type="submit" name="submit" class="btn btn-primary">Login</button>
+                
+            </form>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+<ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+    </ul>
+
+    <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
