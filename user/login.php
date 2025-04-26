@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         header("Location: main.php");
         exit();
     } else {
-        echo "Invalid email or password.";
+      echo "<script>alert('Invalid email or password. Please try again.');</script>";
     }
 }
 ?>

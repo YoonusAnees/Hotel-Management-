@@ -16,10 +16,75 @@
     margin-left: 10px;
 }
 
-.footer-ft{
-    margin-bottom: 50%;
-}
+
 .loginSection{
     margin-top: 10px;
     margin-left: 10px;
 }
+
+.room-section {
+    margin-top: 30px;
+    
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #C9B194;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #706D54;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color:  #706d49;
+}
+
+
+#footer{
+    text-align: center;
+    background-color: #706D54;
+    
+    
+    
+}
+#footer a{
+    margin: 0 5px;
+    padding: auto;
+    color: #0b132b;
+}
+.footer-info{
+    color: #0b132b;
+    margin-top: 5px;
+  
+}
+
+
+
+

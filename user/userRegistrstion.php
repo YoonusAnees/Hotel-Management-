@@ -1,28 +1,38 @@
 <?php
 include('../db/dbconnect.php');
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
 
-  $full_name = $_POST["Full_Name"];
-  $Email = $_POST["email"];
-  $Password = $_POST["Password"];
-  $Nationality = $_POST["Nationality"];
-  $Phone_No = $_POST["phone_no"];
-  
-  
-      
-  $sql = "INSERT INTO `user`(`Full_Name`, `email`, `Password`, `Nationality`, `phone_no`) VALUES ('$full_name','$Email','$Password','$Nationality','$Phone_No')";
-  $result= mysqli_query($connection, $sql);
-  if($result){
-      header("Location:login.php");
-  }else{
-      echo "Failed to insert data";
-      die(mysqli_error($connection));
-  }
-  
-  }
+    // Get form data
+    $full_name = $_POST["Full_Name"];
+    $Email = $_POST["email"];
+    $Password = $_POST["Password"];
+    $Nationality = $_POST["Nationality"];
+    $Phone_No = $_POST["phone_no"];
 
+  
+    $checkEmailQuery = "SELECT * FROM `user` WHERE `email` = '$Email'";
+    $result = mysqli_query($connection, $checkEmailQuery);
 
+    if (mysqli_num_rows($result) > 0) {
+     
+        $error_message = "Email already added. Please use a different email.";
+    } else {
+     
+        $sql = "INSERT INTO `user`(`Full_Name`, `email`, `Password`, `Nationality`, `phone_no`) 
+                VALUES ('$full_name','$Email','$Password','$Nationality','$Phone_No')";
+        $result = mysqli_query($connection, $sql);
+
+        if ($result) {
+          
+            header("Location:login.php");
+        } else {
+            echo "Failed to insert data";
+            die(mysqli_error($connection));
+        }
+    }
+}
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -73,6 +83,13 @@ if(isset($_POST["submit"])){
 <div class="row">
         <div class="col-md-6 offset-md-3">
             <h2>Registration </h2>
+
+            <?php
+            // Display error message if email exists
+            if (isset($error_message)) {
+                echo "<div class='alert alert-danger'>$error_message</div>";
+            }
+            ?>
             <form action="" method="post">
                 <div class="mb-3">
                     <label for="Full_Name" class="form-label">Full Name</label>
