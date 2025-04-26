@@ -10,35 +10,6 @@ if (!isset($_SESSION['email'])) {
 
 // Fetch user details from the database using the email stored in the session
 $email = $_SESSION['email'];
-
-// These should come before the checkQuery
-$room_id = $_POST['room_id'] ?? null;
-$check_in = $_POST['check_in'] ?? null;
-$check_out = $_POST['check_out'] ?? null;
-
-if ($room_id && $check_in && $check_out) {
-    // Query to check overlapping activated bookings
-    $checkQuery = "
-        SELECT * FROM tblbookings
-        WHERE room_id = '$room_id' 
-        AND status = 'Activated'
-        AND (
-            ('$check_in' BETWEEN check_in AND check_out)
-            OR ('$check_out' BETWEEN check_in AND check_out)
-            OR (check_in BETWEEN '$check_in' AND '$check_out')
-            OR (check_out BETWEEN '$check_in' AND '$check_out')
-        )
-    ";
-    $checkResult = mysqli_query($connection, $checkQuery);
-
-    if (mysqli_num_rows($checkResult) > 0) {
-        // Room already booked for the selected dates
-        echo "<script>alert('Sorry, this room is already booked for the selected dates.'); window.history.back();</script>";
-        exit();
-    }
-}
-
-// Get user info
 $userQuery = "SELECT * FROM user WHERE email='$email'";
 $userResult = mysqli_query($connection, $userQuery);
 $sqlRoom = "SELECT * FROM tblrooms";
@@ -55,7 +26,6 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     exit();
 }
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -83,7 +53,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#homeSection">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
       </li>
       
       <li class="nav-item">
@@ -102,15 +72,11 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
         <a class="nav-link " href="#">Contact Us</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0 mr-3 ">
-      <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
 
     <div class="user-info">
    
-      Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-      <a href="./bookingInformation.php"><i class="fas fa-info-circle"></i></a>
+      Booking Infomations of , <?php echo $_SESSION['Full_Name']; ?>!
       
     </div>
 
@@ -158,33 +124,59 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
   </div>
 </section>
 
-<!-- ========== Room Section ========== -->
+<!-- ========== Info Section ========== -->
 
-<section class="room-section container" id="roomSections">
-    <div class="row">
-        <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
-            <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
-                <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
-                            <p class="card-text">
-                                Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
-                                Price: LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
-                                Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
-                                Status: <?php echo htmlspecialchars($row["status"]); ?>
-                            </p>
-                            <a href="./booking.php" class="btn btn-primary">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <p>No Rooms found.</p>
-        <?php endif; ?>
+<!-- ========== Booking Info Section ========== -->
+<section class="container my-5 ">
+  <h3>Your Bookings</h3>
+  <?php
+    $user_id = $_SESSION['id'];
+    $bookingQuery = "
+        SELECT b.*, r.name AS room_name, r.category 
+        FROM tblbookings b 
+        JOIN tblrooms r ON b.room_id = r.id 
+        WHERE b.user_id = '$user_id'
+        ORDER BY b.check_in DESC
+    ";
+    $bookingResult = mysqli_query($connection, $bookingQuery);
+  ?>
+
+  <?php if (mysqli_num_rows($bookingResult) > 0): ?>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Room</th>
+            <th>Category</th>
+            <th>Check-in</th>
+            <th>Check-out</th>
+            <th>Guests</th>
+            <th>Special Requests</th>
+            <th>Total Amount (LKR)</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while ($row = mysqli_fetch_assoc($bookingResult)): ?>
+            <tr>
+              <td><?php echo htmlspecialchars($row['room_name']); ?></td>
+              <td><?php echo htmlspecialchars($row['category']); ?></td>
+              <td><?php echo htmlspecialchars($row['check_in']); ?></td>
+              <td><?php echo htmlspecialchars($row['check_out']); ?></td>
+              <td><?php echo htmlspecialchars($row['guests']); ?></td>
+              <td><?php echo htmlspecialchars($row['special_requests']); ?></td>
+              <td><?php echo number_format($row['total_amount'], 2); ?></td>
+              <td><?php echo htmlspecialchars($row['status']); ?></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
     </div>
+  <?php else: ?>
+    <p>You have no bookings yet.</p>
+  <?php endif; ?>
 </section>
+
 
 
 <footer id="footer" class="spacing text-center">

@@ -23,7 +23,7 @@ $resultRoom = $connection->query($sqlRoom);
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Serenity</title>
   </head>
-  <body>
+  <body class="bg-body">
 
 <!-- ========== Navbar Section ========== -->
 <section id="navbar">
@@ -105,26 +105,30 @@ $resultRoom = $connection->query($sqlRoom);
 
 <!-- ========== Room Section ========== -->
 
-<section id="roomSections">
-    <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
-        <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
-            <div class="card" style="width: 18rem; margin: 10px;">
-                <img src="admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
-                    <p class="card-text">
-                        Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
-                        Price: LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
-                        Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
-                        Status: <?php echo htmlspecialchars($row["status"]); ?>
-                    </p>
-                    <a href="./user/login.php" class="btn btn-primary">Book Now</a>
+<section class="room-section container" id="roomSection">
+    <div class="row">
+        <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
+            <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
+                <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
+                            <p class="card-text">
+                                Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
+                                Price: LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
+                                Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
+                                Status: <?php echo htmlspecialchars($row["status"]); ?>
+                            </p>
+                            <a href="./user/login.php" class="btn btn-primary">Book Now</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>No Rooms found.</p>
-    <?php endif; ?>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No Rooms found.</p>
+        <?php endif; ?>
+    </div>
 </section>
 
 
