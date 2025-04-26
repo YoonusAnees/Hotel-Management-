@@ -136,10 +136,10 @@ $resultRoom = $connection->query($sqlRoom);
 
 <!-- ========== Footer ========== -->
 <footer id="footer" class="spacing text-center">
-  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>

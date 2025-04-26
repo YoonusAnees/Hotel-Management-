@@ -83,7 +83,7 @@ $resultRoom = $connection->query($sqlRoom);
           <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Close to top attractions and nature</li>
           <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Affordable luxury for all travelers</li>
         </ul>
-        <a href="#roomSection" class="btn btn-primary mt-3">Explore Our Rooms</a>
+        <a href="./rooms.php" class="btn btn-primary mt-3">Explore Our Rooms</a>
       </div>
     </div>
 

@@ -41,7 +41,7 @@ $resultRoom = $connection->query($sqlRoom);
           <a class="nav-link" href="#homeSection">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#roomSection">Rooms</a>
+          <a class="nav-link" href="./rooms.php">Rooms</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="./aboutUs.php">About Us</a>
@@ -66,17 +66,83 @@ $resultRoom = $connection->query($sqlRoom);
   </nav>
 </section>
 
-<div class="aboutSection">
-  
+<div class="servives">
+  <!-- ========== Services Section ========== -->
+<section class="container my-5" id="servicesSection">
+  <h2 class="text-center mb-5">Our Services</h2>
+
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-bed fa-3x icon-services mb-3 "></i>
+          <h5 class="card-title">Luxury Accommodation</h5>
+          <p class="card-text">Spacious and stylish rooms designed to offer maximum comfort during your stay.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-utensils fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Fine Dining</h5>
+          <p class="card-text">Enjoy delicious local and international cuisine prepared by top chefs.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-spa fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Spa & Wellness</h5>
+          <p class="card-text">Relax with our exclusive spa treatments, massages, and wellness therapies.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-swimming-pool fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Outdoor Swimming Pool</h5>
+          <p class="card-text">Take a refreshing dip in our clean and well-maintained outdoor pool area.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-shuttle-van fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Airport Transfers</h5>
+          <p class="card-text">Hassle-free transportation to and from the airport available on request.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-mountain-sun fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Tour Packages</h5>
+          <p class="card-text">Explore Sri Lanka's beautiful sights with our customized tour packages.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 </div>
 
 
 <!-- ========== Footer ========== -->
 <footer id="footer" class="spacing text-center">
-  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>

@@ -125,13 +125,70 @@
 
 }
 
-.text-muted-color{
+.text-muted-color , .text-color{
     color: #DBDBDB;
 }
 
 .map{
     border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+.title-contactUs {
+    
+    font-weight: 500;
+    font-size: 30px;
+    
+}
+.title-contactUslist{
+    margin-top: 25px;
+}
+.title-contactUs-icon{
+    color: #DBDBDB;
+}
+
+.title-contactUs-icon:hover{
+    transform: scale(2.05); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.review{
+    margin-right: 100px;
+}
+
+#reviewSection {
+  background-color: #A08963;
+  padding: 50px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center
+}
+
+#reviewSection h2 {
+    color:#DBDBDB;
+  font-weight: bold;
+}
+
+#reviewSection form {
+    background-color: #A08963;
+}
+
+.icon-services{
+    color:#DBDBDB;
+}
+
+
+
+.icon-footer{
+    color:#DBDBDB;
+
+}
+
+.icon-footer:hover{
+    transform: scale(1.05); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
 
 
 #footer{
