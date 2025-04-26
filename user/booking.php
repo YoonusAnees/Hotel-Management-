@@ -1,12 +1,10 @@
 <?php
-include('../db/dbconnect.php');
+include ("../db/dbconnect.php");
 session_start();
 
-// Fetch rooms for dropdown (outside POST block)
-$roomQuery = "SELECT id, name, category FROM tblrooms WHERE status != 'Booked'";
-$resultRoom = mysqli_query($connection, $roomQuery);   
-if (!$resultRoom) {
-    die("Room query failed: " . mysqli_error($connection));
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -20,15 +18,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $full_name = $_SESSION['Full_Name'];
     $email = $_SESSION['email'];
 
-    // Get room price
-    $priceQuery = "SELECT price_per_night FROM tblrooms WHERE id=$room_id";
-    $priceResult = mysqli_query($connection, $priceQuery);
-    if (!$priceResult || mysqli_num_rows($priceResult) == 0) {
+    // Get room details: price and capacity
+    $roomQuery = "SELECT price_per_night, capacity FROM tblrooms WHERE id = '$room_id'";
+    $roomResult = mysqli_query($connection, $roomQuery);
+
+    if (!$roomResult || mysqli_num_rows($roomResult) == 0) {
         die("Invalid room selection.");
     }
 
-    $priceRow = mysqli_fetch_assoc($priceResult);
-    $price_per_night = $priceRow['price_per_night'];
+    $room = mysqli_fetch_assoc($roomResult);
+    $price_per_night = $room['price_per_night'];
+    $capacity = $room['capacity'];
+
+    // Check guest count against capacity
+    if ($guests > $capacity) {
+        echo "<script>alert('The selected room can only accommodate up to $capacity guests.'); window.history.back();</script>";
+        exit;
+    }
+
+    // Check if the room is already booked for overlapping dates
+    $conflictQuery = "
+        SELECT * FROM tblbookings
+        WHERE room_id = '$room_id' 
+        AND status = 'Activated'
+        AND (
+            ('$check_in' BETWEEN check_in AND DATE_SUB(check_out, INTERVAL 1 DAY)) OR
+            ('$check_out' BETWEEN DATE_ADD(check_in, INTERVAL 1 DAY) AND check_out) OR
+            (check_in BETWEEN '$check_in' AND '$check_out') OR
+            (check_out BETWEEN '$check_in' AND '$check_out')
+        )
+    ";
+    $conflictResult = mysqli_query($connection, $conflictQuery);
+
+    if (mysqli_num_rows($conflictResult) > 0) {
+        echo "<script>alert('Sorry, this room is already booked for the selected dates.'); window.history.back();</script>";
+        exit;
+    }
 
     // Calculate total amount
     $days = (strtotime($check_out) - strtotime($check_in)) / (60 * 60 * 24);
@@ -36,10 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<script>alert('Invalid check-in/check-out dates.'); window.history.back();</script>";
         exit;
     }
+
     $total_amount = $days * $price_per_night;
     $status = 'Activated';
 
-    // Insert booking without phone
+    // Insert booking
     $sql = "INSERT INTO tblbookings (user_id, room_id, full_name, email, check_in, check_out, guests, special_requests, total_amount, status) 
             VALUES ('$user_id', '$room_id', '$full_name', '$email', '$check_in', '$check_out', '$guests', '$special_requests', '$total_amount', '$status')";
 
@@ -50,6 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Error: " . mysqli_error($connection);
     }
 }
+
+// Fetch all room details
+$roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capacity FROM tblrooms");
 ?>
 
 <!doctype html>
@@ -74,8 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active"><a class="nav-link" href="#homeSection">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="#roomSections">Rooms</a></li>
+      <li class="nav-item active"><a class="nav-link" href="./main.php">Home</a></li>
       <li class="nav-item"><a class="nav-link" href="#aboutUs">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
@@ -95,32 +123,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <h3>Book a Room</h3>
   <form action="" method="POST">
     <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
+
     <div class="form-group">
       <label>Room Type</label>
-      <select name="room_id" class="form-control" required>
-        <?php while ($row = $resultRoom->fetch_assoc()) { ?>
-          <option value="<?php echo $row['id']; ?>">
-            <?php echo $row['category'] . ' - ' . $row['name']; ?>
+      <select name="room_id" id="room_id" class="form-control" required onchange="updateCapacity()">
+        <?php while ($row = $roomDetailResult->fetch_assoc()) { ?>
+          <option value="<?php echo $row['id']; ?>" data-capacity="<?php echo $row['capacity']; ?>">
+            <?php echo $row['category'] . ' - ' . $row['name'] . ' (Max: ' . $row['capacity'] . ' guests)'; ?>
           </option>
         <?php } ?>
       </select>
     </div>
+
     <div class="form-group">
       <label>Check-in Date</label>
       <input type="date" name="check_in" class="form-control" required>
     </div>
+
     <div class="form-group">
       <label>Check-out Date</label>
       <input type="date" name="check_out" class="form-control" required>
     </div>
+
     <div class="form-group">
-      <label>Guests</label>
-      <input type="number" name="guests" class="form-control" required>
+      <label>Guests <span id="capacity_info" class="text-muted">(Max guests will appear here)</span></label>
+      <input type="number" name="guests" id="guests" class="form-control" min="1" required>
     </div>
+
     <div class="form-group">
       <label>Special Requests</label>
       <textarea name="special_requests" class="form-control"></textarea>
     </div>
+
     <button type="submit" class="btn btn-primary">Book Now</button>
   </form>
 </section>
@@ -138,6 +172,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+<script>
+function updateCapacity() {
+  const select = document.getElementById('room_id');
+  const guestsInput = document.getElementById('guests');
+  const selectedOption = select.options[select.selectedIndex];
+  const maxCapacity = selectedOption.getAttribute('data-capacity');
+
+  guestsInput.max = maxCapacity;
+  document.getElementById('capacity_info').innerText = `Max ${maxCapacity} guests allowed`;
+}
+
+document.addEventListener("DOMContentLoaded", updateCapacity);
+</script>
 
 </body>
 </html>
