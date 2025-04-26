@@ -160,13 +160,13 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
 </section>
 
 <!-- Footer -->
-<footer id="footer" class="spacing text-center">
+<!-- <footer id="footer" class="spacing text-center">
   <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
   <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
   <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
   <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
   <div class="footer-info mt-2">©2025 Developed and Designed by Yoonus Anees</div>
-</footer>
+</footer> -->
 
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

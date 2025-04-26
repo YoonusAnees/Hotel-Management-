@@ -1,5 +1,6 @@
 .bg-body{
     background-color: #A08963;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .nav-bg-color{
@@ -26,8 +27,21 @@
     margin-left: 10px;
 }
 
+.user-info{
+    display: flex;
+    gap: 5px;
+    text-align: center;
+}
+
+.user-info-icon-color {
+    color:#DBDBDB;
+}
+
+
+
 .room-section {
     margin-top: 30px;
+    border-radius: 10px;
     
 }
 
@@ -70,6 +84,55 @@
     background-color:  #706d49;
 }
 
+.img-fluidd{
+    height: 400px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.img-fluidd:hover {
+    transform: scale(1.05); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+    /* cursor: pointer;  */
+}
+.text-list-icon{
+    color: #DBDBDB;
+}
+
+.text-icon{
+    color: #DBDBDB;
+
+}
+
+.text-icon:hover{
+    transform: scale(1.20); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.text-list-icon:hover {
+    transform: scale(2.05); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+.text-color-about :hover{
+    transform: scale(1.05); /* Slight zoom */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
+.text-color-about{
+    color: #DBDBDB;
+    
+
+}
+
+.text-muted-color{
+    color: #DBDBDB;
+}
+
+.map{
+    border-radius: 15px;
+}
+
 
 #footer{
     text-align: center;
@@ -85,10 +148,59 @@
 }
 .footer-info{
     color: #0b132b;
-    margin-top: 5px;
+   
   
 }
 
 
+
+
+/* Small devices (phones) */
+@media (max-width: 576px) {
+    .img-fluidd {
+      width: 100%;
+      height: auto;
+      /* Example: make it less zoom on hover */
+    }
+  }
+  
+  /* Medium devices (tablets) */
+  @media (min-width: 577px) and (max-width: 992px) {
+    .img-fluidd {
+      width: 90%;
+      height: auto;
+    }
+  }
+  
+  /* Large devices (laptops/desktops) */
+  @media (min-width: 993px) {
+    .img-fluidd {
+      width: 500px;
+      height: 400px;
+      
+    }
+  }
+
+  @media (max-width: 576px) {
+    .user-info {
+        display: flex;
+        gap: 5px;
+        text-align: center;
+        font-size: medium;
+        
+        border-radius: 10%;
+      
+        
+    }
+  }
+
+
+  @media (max-width: 576px) {
+    .btn-log-out {
+        margin-top: 5px;
+        margin-left: -8px;
+        
+    }
+  }
 
 

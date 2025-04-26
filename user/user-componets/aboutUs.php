@@ -1,5 +1,5 @@
 <?php
-include('../db/dbconnect.php');
+include("../../db/dbconnect.php");
 session_start();
 
 // Check if session is set
@@ -37,14 +37,14 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Serenity</title>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <title>Serenity About Us</title>
 </head>
 <body class="bg-body">
 
 <section id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-  <a class="navbar-brand" href="main.php">Serenity</a>
+  <a class="navbar-brand" href="#">Serenity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -55,22 +55,16 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
         <a class="nav-link" href="#homeSection">Home</a>
       </li>
       <li class="nav-item"><a class="nav-link" href="#roomSections">Rooms</a></li>
-      <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
-      <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="aboutUs.php">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
-  <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
-     </form>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-     <div class="user-info-icon">
-     <a  href="./bookingInformation.php"><i class=" user-info-icon-color fas fa-info-circle "></i></a>
-     </div>
+      <a href="../bookingInformation.php"><i class="fas fa-info-circle user-info-icon-color"></i></a>
     </div>
     <div class="auth">
-      <a href="../logout.php"><button class="btn btn-dark">Log out</button></a>
+      <a href="../../logout.php"><button class="btn btn-dark btn-log-out">Log out</button></a>
     </div>
   </div>
 </nav>
@@ -87,16 +81,16 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="../assets/image/swimming-pool.jpg" alt="First slide">
+          <img class="d-block w-100" src="../../assets/image/swimming-pool.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="../assets/image/lobby-living-room-hotel.jpg" alt="Second slide">
+          <img class="d-block w-100" src="../../assets/image/lobby-living-room-hotel.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="../assets/image/swimming-pool-resort.jpg" alt="Third slide">
+          <img class="d-block w-100" src="../../assets/image/swimming-pool-resort.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="../assets/image/house-kitchen.jpg" alt="Fourth slide">
+          <img class="d-block w-100" src="../../assets/image/house-kitchen.jpg" alt="Fourth slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -117,7 +111,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
       <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
         <div class="col-12 col-md-6 col-lg-4 d-flex mb-4">
           <div class="card" style="width: 18rem;">
-            <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
+            <img src="../../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
             <div class="card-body">
               <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
               <p class="card-text">
@@ -136,6 +130,52 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <?php endif; ?>
   </div>
 </section>
+
+<section id="aboutSection" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="../../assets/image/villa.jpg" alt="Serenity Villa" class="img-fluidd">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-4">Welcome to <span class="text-color-about">Serenity Villa</span></h2>
+        <p class="lead">Your perfect getaway to relaxation, comfort, and unforgettable memories.</p>
+        <p>Founded in 2025, Serenity was created with a passion to blend nature's calmness with luxurious hospitality. Every space is crafted to make you feel at home while you enjoy beautiful surroundings and premium services.</p>
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Stylish and spacious rooms</li>
+          <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Friendly and professional service</li>
+          <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Close to top attractions and nature</li>
+          <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Affordable luxury for all travelers</li>
+        </ul>
+        <a href="#roomSection" class="btn btn-primary mt-3">Explore Our Rooms</a>
+      </div>
+    </div>
+
+    <div class="row mt-5 text-center">
+      <div class="col-md-3 mb-4">
+        <i class="fa-solid fa-bed fa-3x text-icon mb-2"></i>
+        <h5>Comfortable Rooms</h5>
+        <p class="text-muted-color small ">Designed for ultimate relaxation and luxury.</p>
+      </div>
+      <div class="col-md-3 mb-4">
+        <i class="fa-solid fa-swimming-pool fa-3x text-icon mb-2"></i>
+        <h5>Outdoor Pool</h5>
+        <p class="text-muted-color small">Dive into relaxation and sunshine.</p>
+      </div>
+      <div class="col-md-3 mb-4">
+        <i class="fa-solid fa-wifi fa-3x text-icon mb-2"></i>
+        <h5>Free Wi-Fi</h5>
+        <p class="text-muted-color small">Stay connected during your stay.</p>
+      </div>
+      <div class="col-md-3 mb-4">
+        <i class="fa-solid fa-concierge-bell fa-3x text-icon mb-2"></i>
+        <h5>24/7 Service</h5>
+        <p class="text-muted-color small">Always here to help and serve you better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <footer id="footer" class="spacing text-center">
   <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>

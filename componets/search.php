@@ -1,5 +1,5 @@
 <?php
-include("./db/dbconnect.php");
+include("../db/dbconnect.php");
 
 $rooms = [];
 $query = '';
@@ -23,7 +23,7 @@ if (isset($_GET['query'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
   <title>Serenity</title>
 </head>
 <body class="bg-body">
@@ -40,7 +40,7 @@ if (isset($_GET['query'])) {
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="./index.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#roomSection">Rooms</a></li>
         <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
@@ -61,7 +61,7 @@ if (isset($_GET['query'])) {
       <?php foreach ($rooms as $room): ?>
         <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">          
           <div class="card">
-            <img src="./admin/itemimages/<?php echo htmlspecialchars($room['image_path']); ?>" class="card-img-top" alt="Room Image">
+            <img src="../admin/itemimages/<?php echo htmlspecialchars($room['image_path']); ?>" class="card-img-top" alt="Room Image">
             <div class="card-body">
               <h5 class="card-title"><?php echo htmlspecialchars($room["name"]); ?></h5>
               <p class="card-text">Category: <?php echo htmlspecialchars($room["category"]); ?></p>
@@ -84,7 +84,7 @@ if (isset($_GET['query'])) {
 </section>
 
 <!-- ========== Footer ========== -->
-<footer id="footer" class="text-center " >
+<!-- <footer id="footer" class="text-center my-4"  >
   <div>
     <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin mx-2"></i></a>
     <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github mx-2"></i></a>
@@ -94,7 +94,7 @@ if (isset($_GET['query'])) {
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>
-</footer>
+</footer> -->
 
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

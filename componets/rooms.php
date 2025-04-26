@@ -1,5 +1,5 @@
 <?php
-include("./db/dbconnect.php");
+include("../db/dbconnect.php");
 
 // Check for database connection
 if (!$connection) {
@@ -20,7 +20,7 @@ $resultRoom = $connection->query($sqlRoom);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Serenity</title>
   </head>
   <body class="bg-body">
@@ -28,7 +28,7 @@ $resultRoom = $connection->query($sqlRoom);
 <!-- ========== Navbar Section ========== -->
 <section id="navbar">
   <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-    <a class="navbar-brand" href="./index.php">Serenity</a>
+    <a class="navbar-brand" href="#">Serenity</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -38,22 +38,22 @@ $resultRoom = $connection->query($sqlRoom);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#homeSection">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="./componets/rooms.php">Rooms</a>
+          <a class="nav-link" href="./rooms.php">Rooms</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./componets/aboutUs.php">About Us</a>
+          <a class="nav-link" href="./aboutUs.php">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./componets/services.php">Services</a>
+          <a class="nav-link" href="./services.php">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./componets/contactUs">Contact Us</a>
+          <a class="nav-link" href="./contactUs.php">Contact Us</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="./componets/search.php" method="GET">
+      <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
   <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
   <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
      </form>
@@ -66,54 +66,19 @@ $resultRoom = $connection->query($sqlRoom);
   </nav>
 </section>
 
-<!-- ========== Home Section ========== -->
-<section id="homeSection">
-  <div class="her">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="./assets/image/swimming-pool.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="./assets/image/lobby-living-room-hotel.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="./assets/image/swimming-pool-resort.jpg" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="./assets/image/house-kitchen.jpg" alt="Fourth slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</section>
+
 
 
 
 <!-- ========== Room Section ========== -->
 
 <section class="room-section container" id="roomSection">
-  <h1>Rooms Here</h1>
     <div class="row">
         <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
                 <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">
                     <div class="card" style="width: 18rem;">
-                        <img src="./admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
+                        <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
                             <p class="card-text">
@@ -122,7 +87,7 @@ $resultRoom = $connection->query($sqlRoom);
                                 Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
                                 Status: <?php echo htmlspecialchars($row["status"]); ?>
                             </p>
-                            <a href="./user/login.php" class="btn btn-primary">Book Now</a>
+                            <a href="../user/login.php" class="btn btn-primary">Book Now</a>
                         </div>
                     </div>
                 </div>

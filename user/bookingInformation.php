@@ -56,12 +56,12 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
         <a class="nav-link" href="./main.php ">Home <span class="sr-only">(current)</span></a>
       </li>
       
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#roomSections">Rooms</a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
-        <a class="nav-link" href="#aboutUs">About Us</a>
+        <a class="nav-link" href="./user-componets/aboutUs.php">About Us</a>
       </li>
     
       <li class="nav-item">
@@ -69,7 +69,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
       </li>
      
       <li class="nav-item">
-        <a class="nav-link " href="#">Contact Us</a>
+        <a class="nav-link " href="./user-componets/contactUs.php">Contact Us</a>
       </li>
     </ul>
    
