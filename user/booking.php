@@ -88,6 +88,8 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Serenity - Book Room</title>
   </head>
@@ -119,7 +121,7 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
 </section>
 
 <!-- Booking Form -->
-<section class="container my-5">
+<section class="container my-4">
   <h3>Book a Room</h3>
   <form action="" method="POST">
     <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']; ?>">
@@ -146,7 +148,7 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
     </div>
 
     <div class="form-group">
-      <label>Guests <span id="capacity_info" class="text-muted">(Max guests will appear here)</span></label>
+      <label>Guests <span id="capacity_info" class="text-muted"></span></label>
       <input type="number" name="guests" id="guests" class="form-control" min="1" required>
     </div>
 
@@ -159,33 +161,24 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
   </form>
 </section>
 
-<!-- Footer -->
-<!-- <footer id="footer" class="spacing text-center">
-  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-  <div class="footer-info mt-2">©2025 Developed and Designed by Yoonus Anees</div>
-</footer> -->
+<footer id="footer" style="margin-top:41px;">
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
+  <div class="footer-info mt-2">
+    ©2025 Developed and Designed by Yoonus Anees
+  </div>
+</footer>
 
 <!-- JS Scripts -->
+<script src="../../assets/js/app.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
-<script>
-function updateCapacity() {
-  const select = document.getElementById('room_id');
-  const guestsInput = document.getElementById('guests');
-  const selectedOption = select.options[select.selectedIndex];
-  const maxCapacity = selectedOption.getAttribute('data-capacity');
 
-  guestsInput.max = maxCapacity;
-  document.getElementById('capacity_info').innerText = `Max ${maxCapacity} guests allowed`;
-}
 
-document.addEventListener("DOMContentLoaded", updateCapacity);
-</script>
 
 </body>
 </html>

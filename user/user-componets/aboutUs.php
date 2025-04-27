@@ -37,6 +37,8 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="../../assets/logo/s-solid.svg">
+
     <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Serenity Auth About Us</title>
 </head>

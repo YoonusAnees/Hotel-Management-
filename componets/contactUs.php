@@ -6,9 +6,32 @@ if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
+  $email = mysqli_real_escape_string($connection, $_POST['email']);
+  $phone = mysqli_real_escape_string($connection, $_POST['phone']);
+  $rating = intval($_POST['rating']);
+  $message = mysqli_real_escape_string($connection, $_POST['message']);
+
+  // Insert into database
+  $sql = "INSERT INTO tblreviews (full_name, email, phone, rating, message) 
+          VALUES ('$full_name', '$email', '$phone', '$rating', '$message')";
+
+  if (mysqli_query($connection, $sql)) {
+      // Redirect back or show success
+      echo "<script>alert('Thank you for your review!');</script>";
+  } else {
+      echo "Error: " . mysqli_error($connection);
+  }
+} else {
+  echo "Invalid Access!";
+}
+
+
 // Fetch product data
 $sqlRoom = "SELECT * FROM tblrooms";
 $resultRoom = $connection->query($sqlRoom);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,6 +39,8 @@ $resultRoom = $connection->query($sqlRoom);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -89,7 +114,7 @@ $resultRoom = $connection->query($sqlRoom);
  
   <div class="review" id="reviewSection">
     <h2 class="text-center text-color">Leave a Review</h2>
-  <form action="outerCustomerReview.php" method="POST" class="p-4">
+  <form action="" method="POST" class="p-4">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="fullName">Full Name</label>

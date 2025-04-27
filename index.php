@@ -9,6 +9,9 @@ if (!$connection) {
 // Fetch product data
 $sqlRoom = "SELECT * FROM tblrooms";
 $resultRoom = $connection->query($sqlRoom);
+
+$sqlReview = "SELECT * FROM tblreviews ORDER BY created_at DESC";
+$resultReview = mysqli_query($connection, $sqlReview);
 ?>
 <!doctype html>
 <html lang="en">
@@ -53,7 +56,7 @@ $resultRoom = $connection->query($sqlRoom);
           <a class="nav-link" href="./componets/services.php">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./componets/contactUs">Contact Us</a>
+          <a class="nav-link" href="./componets/contactUs.php">Contact Us</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0" action="./componets/search.php" method="GET">
@@ -110,8 +113,8 @@ $resultRoom = $connection->query($sqlRoom);
 <!-- ========== Room Section ========== -->
 
 <section class="room-section container" id="roomSection">
-  <h1>Rooms Here</h1>
-    <div class="row">
+<h2 class="text-center text-color mb-4">Rooms Here</h2>
+<div class="row">
         <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
                 <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">
@@ -134,6 +137,42 @@ $resultRoom = $connection->query($sqlRoom);
             <p>No Rooms found.</p>
         <?php endif; ?>
     </div>
+</section>
+
+
+        <!--======================Customer Review======================= -->
+
+
+        <section class="container my-5">
+  <h2 class="text-center text-color mb-4">Guest Reviews</h2>
+
+  <div class="row">
+    <?php while ($row = mysqli_fetch_assoc($resultReview)) { ?>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm p-3 rounded">
+          <div class="card-body">
+            <h5 class="card-title mb-2"><?php echo htmlspecialchars($row['full_name']); ?></h5>
+            
+            <!-- Star Rating -->
+            <div class="mb-2">
+              <?php
+              $rating = (int) $row['rating'];
+              for ($i = 0; $i < $rating; $i++) {
+                  echo '<i class="fas fa-star text-warning"></i> ';
+              }
+              for ($i = $rating; $i < 5; $i++) {
+                  echo '<i class="far fa-star text-warning"></i> ';
+              }
+              ?>
+            </div>
+
+            <p class="card-text"><?php echo htmlspecialchars($row['message']); ?></p>
+            <small class="text-muted"><?php echo htmlspecialchars(date('d M Y', strtotime($row['created_at']))); ?></small>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
+  </div>
 </section>
 
 

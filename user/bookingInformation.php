@@ -33,6 +33,8 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
+
 
 
     <!-- Bootstrap CSS -->

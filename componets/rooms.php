@@ -16,6 +16,8 @@ $resultRoom = $connection->query($sqlRoom);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -59,8 +61,8 @@ $resultRoom = $connection->query($sqlRoom);
      </form>
 
       <div class="auth ml-2">
-        <a href="./user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
-        <a href="./user/userRegistrstion.php"><button type="button" class="btn btn-dark">Registration</button></a>
+        <a href="../user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
+        <a href="../user/userRegistrstion.php"><button type="button" class="btn btn-dark">Registration</button></a>
       </div>
     </div>
   </nav>

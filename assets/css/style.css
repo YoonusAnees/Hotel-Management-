@@ -26,8 +26,7 @@
 
 
 .loginSection{
-    margin-top: 10px;
-    margin-left: 10px;
+ margin-bottom: 100px;
 }
 
 .user-info{
@@ -194,9 +193,13 @@
 
 
 
+
+
 #footer{
     text-align: center;
     background-color: #706D54;
+   
+
     
     
     
