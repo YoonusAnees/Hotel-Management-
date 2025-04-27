@@ -15,7 +15,10 @@ $resultRoom = $connection->query($sqlRoom);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/x-icon" href="./assets/logo/s-solid.svg">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+   
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -55,10 +58,10 @@ $resultRoom = $connection->query($sqlRoom);
       </ul>
       <form class="form-inline my-2 my-lg-0" action="./componets/search.php" method="GET">
   <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+  <button class="btn btn-success my-2 my-sm-0 auth-bg" type="submit">Search</button>
      </form>
 
-      <div class="auth ml-2">
+      <div class="auth">
         <a href="./user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
         <a href="./user/userRegistrstion.php"><button type="button" class="btn btn-dark">Registration</button></a>
       </div>

@@ -57,92 +57,79 @@ $resultRoom = $connection->query($sqlRoom);
 </nav>
 </section>
 
+<div class="servives">
+  <!-- ========== Services Section ========== -->
+<section class="container my-5" id="servicesSection">
+  <h2 class="text-center mb-5">Our Services</h2>
 
-<!-- Contact Us Section -->
-<section class="container my-5 ">
-  
-  <div class="row">
-    <div class="col-md-6 mb-5" >
-      <div class="title-contactUs">Further Details We are here get in Touch</div>
-     <div class="title-contactUslist">
-     <p><a href="https://www.google.com/maps/place/Akurana,+%5Bno+name%5D/data=!4m2!3m1!1s0x3ae34324f9293dfd:0x8125a2e59ddf4476?sa=X&ved=1t:242&ictx=111"><i class="fa-solid fa-location-dot mr-2 title-contactUs-icon"></i></a> Serenity Villa, Akurana, Sri Lanka</p>
-      <p><a href="tel:+94761310771"><a><i class="fa-solid fa-phone mr-2 title-contactUs-icon"></a></i> +94 76 131 0771</p>
-      <p><a href="mailto:"><i class="fa-solid fa-envelope mr-2 title-contactUs-icon"></i></a> serenityvilla@gmail.com</p>
-     </div>
-
-      <h5 class="mt-4">Business Hours</h5>
-      <p>Monday - Sunday: 8 AM to 8 PM</p>
-
-
-         <!-- Review Section -->
-
- 
-  <div class="review" id="reviewSection">
-    <h2 class="text-center text-color">Leave a Review</h2>
-  <form action="outerCustomerReview.php" method="POST" class="p-4">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="fullName">Full Name</label>
-      <input type="text" name="full_name" class="form-control" id="fullName" placeholder="Enter your full name" required>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-bed fa-3x icon-services mb-3 "></i>
+          <h5 class="card-title">Luxury Accommodation</h5>
+          <p class="card-text">Spacious and stylish rooms designed to offer maximum comfort during your stay.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="emailAddress">Email Address</label>
-      <input type="email" name="email" class="form-control" id="emailAddress" placeholder="Enter your email" required>
-    </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="phoneNumber">Phone Number</label>
-      <input type="text" name="phone" class="form-control" id="phoneNumber" placeholder="Enter your phone number" required>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-utensils fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Fine Dining</h5>
+          <p class="card-text">Enjoy delicious local and international cuisine prepared by top chefs.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="rating">Rating</label>
-      <select name="rating" class="form-control" id="rating" required>
-        <option value="">Select a rating</option>
-        <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
-        <option value="4">⭐⭐⭐⭐ - Good</option>
-        <option value="3">⭐⭐⭐ - Average</option>
-        <option value="2">⭐⭐ - Poor</option>
-        <option value="1">⭐ - Very Poor</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="reviewMessage">Your Review</label>
-    <textarea name="message" class="form-control" id="reviewMessage" rows="5" placeholder="Write your experience..." required></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary btn-block">Submit Review</button>
-</form>
-         </div>
-
-
-
-
-
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-spa fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Spa & Wellness</h5>
+          <p class="card-text">Relax with our exclusive spa treatments, massages, and wellness therapies.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-6">
-      <div style="width: 100%"><iframe class="map" width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=srilanka,kandy,Akurana/kurugoda+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-      <a href="https://www.gps.ie/collections/personal-trackers/">
-      real-time gps tracker,</a></iframe>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-swimming-pool fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Outdoor Swimming Pool</h5>
+          <p class="card-text">Take a refreshing dip in our clean and well-maintained outdoor pool area.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-shuttle-van fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Airport Transfers</h5>
+          <p class="card-text">Hassle-free transportation to and from the airport available on request.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <i class="fa-solid fa-mountain-sun fa-3x icon-services mb-3"></i>
+          <h5 class="card-title">Tour Packages</h5>
+          <p class="card-text">Explore Sri Lanka's beautiful sights with our customized tour packages.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
- 
-
-
+</div>
 
 
 <!-- ========== Footer ========== -->
-<footer id="footer" class="spacing text-center ">
+<footer id="footer" class="spacing text-center">
   <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
   <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
   <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>

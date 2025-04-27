@@ -1,34 +1,7 @@
 <?php
 include('../db/dbconnect.php');
-session_start();
+include('./useContext/useContext.php');
 
-// Check if session is set
-if (!isset($_SESSION['email'])) {
-    header("location:login.php");
-    exit();
-}
-
-// Fetch user details from the database using the email stored in the session
-$email = $_SESSION['email'];
-
-
-
-
-// Get user info
-$userQuery = "SELECT * FROM user WHERE email='$email'";
-$userResult = mysqli_query($connection, $userQuery);
-$sqlRoom = "SELECT * FROM tblrooms";
-$resultRoom = $connection->query($sqlRoom);
-
-if ($userResult && mysqli_num_rows($userResult) > 0) {
-    $userRow = mysqli_fetch_assoc($userResult);
-    // Set session variables
-    $_SESSION['Full_Name'] = $userRow['Full_Name'];
-    $_SESSION['id'] = $userRow['id'];
-} else {
-    echo "User not found.";
-    exit();
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,6 +9,8 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+    <link rel="" type="image/x-icon" href="/images/favicon.ico">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Serenity</title>
@@ -54,10 +29,10 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
       <li class="nav-item active">
         <a class="nav-link" href="#homeSection">Home</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="#roomSections">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php"">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
-      <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">Services</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
   <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
@@ -138,10 +113,10 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 </section>
 
 <footer id="footer" class="spacing text-center">
-  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>

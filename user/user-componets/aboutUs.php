@@ -38,13 +38,13 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <title>Serenity About Us</title>
+    <title>Serenity Auth About Us</title>
 </head>
 <body class="bg-body">
 
 <section id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-  <a class="navbar-brand" href="#">Serenity</a>
+  <a class="navbar-brand" href="../main.php">Serenity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -52,12 +52,12 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#homeSection">Home</a>
+        <a class="nav-link" href="../main.php">Home</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="#roomSections">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="aboutUs.php">About Us</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-      <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
     </ul>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
@@ -70,66 +70,9 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 </nav>
 </section>
 
-<section id="homeSection">
-  <div class="her">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="d-block w-100" src="../../assets/image/swimming-pool.jpg" alt="First slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="../../assets/image/lobby-living-room-hotel.jpg" alt="Second slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="../../assets/image/swimming-pool-resort.jpg" alt="Third slide">
-        </div>
-        <div class="carousel-item">
-          <img class="d-block w-100" src="../../assets/image/house-kitchen.jpg" alt="Fourth slide">
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</section>
 
-<section class="room-section container" id="roomSections">
-  <div class="row">
-    <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
-      <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
-        <div class="col-12 col-md-6 col-lg-4 d-flex mb-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
-            <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
-              <p class="card-text">
-                Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
-                Price: LKR <?php echo number_format($row["price_per_night"], 2); ?><br>
-                Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
-                Status: <?php echo htmlspecialchars($row["status"]); ?>
-              </p>
-              <a href="./booking.php" class="btn btn-primary">Book Now</a>
-            </div>
-          </div>
-        </div>
-      <?php endwhile; ?>
-    <?php else: ?>
-      <p>No Rooms found.</p>
-    <?php endif; ?>
-  </div>
-</section>
+
+
 
 <section id="aboutSection" class="py-5">
   <div class="container">
@@ -147,7 +90,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
           <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Close to top attractions and nature</li>
           <li class="mb-2"><i class="fa-solid fa-check text-list-icon mr-2"></i> Affordable luxury for all travelers</li>
         </ul>
-        <a href="#roomSection" class="btn btn-primary mt-3">Explore Our Rooms</a>
+        <a href="./rooms.php" class="btn btn-primary mt-3">Explore Our Rooms</a>
       </div>
     </div>
 

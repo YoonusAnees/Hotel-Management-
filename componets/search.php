@@ -41,14 +41,14 @@ if (isset($_GET['query'])) {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#roomSection">Rooms</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="../componets/rooms.php">Rooms</a></li>
+        <li class="nav-item"><a class="nav-link" href="../componets/aboutUs.php">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="../componets/services.php">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="../componets/contactUs.php">Contact Us</a></li>
       </ul>
       <div class="auth ml-2">
-        <a href="./user/login.php" class="btn btn-dark">Login</a>
-        <a href="./user/userRegistrstion.php" class="btn btn-dark">Registration</a>
+        <a href="../user/login.php" class="btn btn-dark">Login</a>
+        <a href="../user/userRegistrstion.php" class="btn btn-dark">Registration</a>
       </div>
     </div>
   </nav>
@@ -69,7 +69,7 @@ if (isset($_GET['query'])) {
               <p class="card-text">Capacity: <?php echo htmlspecialchars($room["capacity"]); ?></p>
               <form action="" method="POST">
                 <input type="hidden" name="id" value="<?php echo $room['id']; ?>">
-                <a href="./user/login.php"><button type="button" class="btn btn-primary">Book Now</button></a>
+                <a href="../user/login.php"><button type="button" class="btn btn-primary">Book Now</button></a>
               </form>
             </div>
           </div>
