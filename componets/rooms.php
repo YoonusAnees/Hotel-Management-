@@ -39,7 +39,7 @@ $resultRoom = $connection->query($sqlRoom);
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active">
@@ -57,7 +57,7 @@ $resultRoom = $connection->query($sqlRoom);
       </ul>
       <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
   <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+  <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
      </form>
 
       <div class="auth-bg">
@@ -75,27 +75,30 @@ $resultRoom = $connection->query($sqlRoom);
 <!-- ========== Room Section ========== -->
 
 <section class="room-section container" id="roomSection">
+    
     <div class="row">
         <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
             <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
-                <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
-                        <div class="card-body">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
+                    <div class="card shadow-sm" style="width: 100%; max-width: 18rem;">
+                        <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image" style="object-fit: cover; height: 200px;">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
-                            <p class="card-text">
-                                Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
-                                Price: LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
-                                Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
-                                Status: <?php echo htmlspecialchars($row["status"]); ?>
+                            <p class="card-text small mb-2">
+                                <strong>Type:</strong> <?php echo htmlspecialchars($row["category"]); ?><br>
+                                <strong>Price:</strong> LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
+                                <strong>Capacity:</strong> <?php echo htmlspecialchars($row["capacity"]); ?><br>
+                                <strong>Status:</strong> <?php echo htmlspecialchars($row["status"]); ?>
                             </p>
-                            <a href="../user/login.php" class="btn btn-primary">Book Now</a>
+                            <a href="../user/login.php" class="btn btn-primary mt-auto">Book Now</a>
                         </div>
                     </div>
                 </div>
             <?php endwhile; ?>
         <?php else: ?>
-            <p>No Rooms found.</p>
+            <div class="col-12">
+                <p class="text-center">No Rooms found.</p>
+            </div>
         <?php endif; ?>
     </div>
 </section>

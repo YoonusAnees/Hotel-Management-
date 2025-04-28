@@ -117,7 +117,7 @@ $resultRoom = $connection->query($sqlRoom);
          <!-- Review Section -->
 
  
-  <div class="review" id="reviewSection">
+  <div class="review " id="reviewSection">
     <h2 class="text-center text-color">Leave a Review</h2>
   <form action="" method="POST" class="p-4">
   <div class="form-row">

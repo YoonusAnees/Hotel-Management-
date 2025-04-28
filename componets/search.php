@@ -42,61 +42,75 @@ if (isset($_GET['query'])) {
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="../componets/rooms.php">Rooms</a></li>
-        <li class="nav-item"><a class="nav-link" href="../componets/aboutUs.php">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="../componets/services.php">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="../componets/contactUs.php">Contact Us</a></li>
+        <li class="nav-item ">
+          <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="./rooms.php">Rooms</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./aboutUs.php">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./services.php">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="./contactUs.php">Contact Us</a>
+        </li>
       </ul>
+      <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
+  <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+     </form>
+
       <div class="auth-bg">
-        <a href="../user/login.php" class="btn btn-dark">Login</a>
-        <a href="../user/userRegistrstion.php" class="btn btn-dark">Registration</a>
+        <a href="../user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
+        <a href="../user/userRegistrstion.php"><button type="button" class="btn btn-dark">Registration</button></a>
       </div>
     </div>
   </nav>
 </section>
 
+
 <section class="room-section container" id="roomSection">
-  <h2 class="my-4">Search Results for "<?php echo htmlspecialchars($query); ?>"</h2>
+  <h2 class="my-4 text-center">Search Results for "<?php echo htmlspecialchars($query); ?>"</h2>
   <div class="row">
     <?php if (!empty($rooms)): ?>
       <?php foreach ($rooms as $room): ?>
-        <div class="col-12 col-md-6 col-lg-4 d-flex  mb-4">          
-          <div class="card">
-            <img src="../admin/itemimages/<?php echo htmlspecialchars($room['image_path']); ?>" class="card-img-top" alt="Room Image">
-            <div class="card-body">
+        <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center mb-4">
+          <div class="card shadow-sm" style="width: 100%; max-width: 18rem;">
+            <img src="../admin/itemimages/<?php echo htmlspecialchars($room['image_path']); ?>" class="card-img-top" alt="Room Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title"><?php echo htmlspecialchars($room["name"]); ?></h5>
-              <p class="card-text">Category: <?php echo htmlspecialchars($room["category"]); ?></p>
-              <p class="card-text">Price: LKR <?php echo number_format($room["price_per_night"], 2); ?></p>
-              <p class="card-text">Capacity: <?php echo htmlspecialchars($room["capacity"]); ?></p>
-              <form action="" method="POST">
-                <input type="hidden" name="id" value="<?php echo $room['id']; ?>">
-                <a href="../user/login.php"><button type="button" class="btn btn-primary">Book Now</button></a>
-              </form>
+              <p class="card-text mb-1"><strong>Category:</strong> <?php echo htmlspecialchars($room["category"]); ?></p>
+              <p class="card-text mb-1"><strong>Price:</strong> LKR <?php echo number_format($room["price_per_night"], 2); ?></p>
+              <p class="card-text mb-3"><strong>Capacity:</strong> <?php echo htmlspecialchars($room["capacity"]); ?></p>
+              <a href="../user/login.php" class="btn btn-primary mt-auto">Book Now</a>
             </div>
           </div>
         </div>
       <?php endforeach; ?>
     <?php else: ?>
-      <div class="col-12">
+      <div class="col-12 text-center">
         <p class="text-muted">No rooms found matching your search.</p>
       </div>
     <?php endif; ?>
   </div>
 </section>
 
+
 <!-- ========== Footer ========== -->
-<!-- <footer id="footer" class="text-center my-4"  >
+<footer id="footer" class= "text-center" style="margin-top:78px" >
   <div>
-    <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin mx-2"></i></a>
-    <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github mx-2"></i></a>
-    <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram mx-2"></i></a>
-    <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope mx-2"></i></a>
+    <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin mx-2 icon-footer"></i></a>
+    <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github mx-2 icon-footer"></i></a>
+    <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram mx-2 icon-footer"></i></a>
+    <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope mx-2 icon-footer"></i></a>
   </div>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>
-</footer> -->
+</footer>
 
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

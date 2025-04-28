@@ -56,13 +56,15 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#homeSection">Home</a>
+      <li class="nav-item ">
+        <a class="nav-link" href="./main.php">Home</a>
       </li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
+      <li class="nav-item active"><a class="nav-link" href="bookingInformation.php">Booking Info</a></li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
       <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
@@ -117,10 +119,9 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 </section>
 
 <!-- ========== Info Section ========== -->
-
 <!-- ========== Booking Info Section ========== -->
-<section class="container my-5 ">
-  <h3>Your Bookings</h3>
+<section class="container my-5">
+  <h3 class="mb-4 text-center text-md-left">Your Bookings</h3>
   <?php
     $user_id = $_SESSION['id'];
     $bookingQuery = "
@@ -135,17 +136,17 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 
   <?php if (mysqli_num_rows($bookingResult) > 0): ?>
     <div class="table-responsive">
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-hover">
         <thead class="thead-dark">
           <tr>
-            <th>Room</th>
-            <th>Category</th>
-            <th>Check-in</th>
-            <th>Check-out</th>
-            <th>Guests</th>
-            <th>Special Requests</th>
-            <th>Total Amount (LKR)</th>
-            <th>Status</th>
+            <th scope="col">Room</th>
+            <th scope="col">Category</th>
+            <th scope="col">Check-in</th>
+            <th scope="col">Check-out</th>
+            <th scope="col">Guests</th>
+            <th scope="col">Special Requests</th>
+            <th scope="col">Total Amount (LKR)</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
@@ -158,16 +159,28 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
               <td><?php echo htmlspecialchars($row['guests']); ?></td>
               <td><?php echo htmlspecialchars($row['special_requests']); ?></td>
               <td><?php echo number_format($row['total_amount'], 2); ?></td>
-              <td><?php echo htmlspecialchars($row['status']); ?></td>
+              <td>
+                <span class="badge 
+                  <?php 
+                    if ($row['status'] == 'Confirmed') echo 'badge-success'; 
+                    elseif ($row['status'] == 'Pending') echo 'badge-warning';
+                    else echo 'badge-secondary'; 
+                  ?>">
+                  <?php echo htmlspecialchars($row['status']); ?>
+                </span>
+              </td>
             </tr>
           <?php endwhile; ?>
         </tbody>
       </table>
     </div>
   <?php else: ?>
-    <p>You have no bookings yet.</p>
+    <div class="text-center">
+      <p class="text-muted">You have no bookings yet.</p>
+    </div>
   <?php endif; ?>
 </section>
+
 
 
 

@@ -27,9 +27,10 @@ $resultRoom = $connection->query($sqlRoom);
   <body class="bg-body">
 
 <!-- ========== Navbar Section ========== -->
+
 <section id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-  <a class="navbar-brand" href="../main.php">Serenity</a>
+  <a class="navbar-brand" href="main.php">Serenity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -39,28 +40,27 @@ $resultRoom = $connection->query($sqlRoom);
       <li class="nav-item ">
         <a class="nav-link" href="../main.php">Home</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="./rooms.php"">Rooms</a></li>
+      <li class="nav-item "><a class="nav-link" href="./rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
       <li class="nav-item active"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
-  <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
-     </form>
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-     <div class="user-info-icon">
-     <a  href="../bookingInformation.php"><i class=" user-info-icon-color fas fa-info-circle "></i></a>
-     </div>
+      <div class="user-info-icon">
+        <a href="../bookingInformation.php"><i class="user-info-icon-color fas fa-info-circle"></i></a>
+      </div>
     </div>
     <div class="auth">
-    <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
+      <button class="btn btn-dark" id="logoutBtn">Log out</button>
     </div>
   </div>
 </nav>
 </section>
-
 
 <!-- Contact Us Section -->
 <section class="container my-5 ">
@@ -81,9 +81,9 @@ $resultRoom = $connection->query($sqlRoom);
          <!-- Review Section -->
 
  
-  <div class="review" id="reviewSection">
+  <div class="review " id="reviewSection">
     <h2 class="text-center text-color">Leave a Review</h2>
-  <form action="outerCustomerReview.php" method="POST" class="p-4">
+  <form action="" method="POST" class="p-4">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="fullName">Full Name</label>

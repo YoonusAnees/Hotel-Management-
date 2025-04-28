@@ -88,30 +88,33 @@ include('./useContext/useContext.php');
   </div>
 </section>
 
-<section class="room-section container" id="roomSections">
-  <div class="row">
-    <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
-      <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
-        <div class="col-12 col-md-6 col-lg-4 d-flex mb-4">
-          <div class="card" style="width: 18rem;">
-            <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image">
-            <div class="card-body">
-              <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
-              <p class="card-text">
-                Room Type: <?php echo htmlspecialchars($row["category"]); ?><br>
-                Price: LKR <?php echo number_format($row["price_per_night"], 2); ?><br>
-                Available: <?php echo htmlspecialchars($row["capacity"]); ?><br>
-                Status: <?php echo htmlspecialchars($row["status"]); ?>
-              </p>
-              <a href="./booking.php" class="btn btn-primary">Book Now</a>
+<section class="room-section container" id="roomSection">
+    <h2 class="text-center text-color mb-4">Rooms Here</h2>
+    <div class="row">
+        <?php if ($resultRoom && mysqli_num_rows($resultRoom) > 0): ?>
+            <?php while ($row = mysqli_fetch_assoc($resultRoom)): ?>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 d-flex justify-content-center mb-4">
+                    <div class="card shadow-sm" style="width: 100%; max-width: 18rem;">
+                        <img src="../admin/itemimages/<?php echo htmlspecialchars($row['image_path']); ?>" class="card-img-top" alt="Room Image" style="object-fit: cover; height: 200px;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title"><?php echo htmlspecialchars($row["name"]); ?></h5>
+                            <p class="card-text small mb-2">
+                                <strong>Type:</strong> <?php echo htmlspecialchars($row["category"]); ?><br>
+                                <strong>Price:</strong> LKR <?php echo htmlspecialchars(number_format($row["price_per_night"], 2)); ?><br>
+                                <strong>Capacity:</strong> <?php echo htmlspecialchars($row["capacity"]); ?><br>
+                                <strong>Status:</strong> <?php echo htmlspecialchars($row["status"]); ?>
+                            </p>
+                            <a href="./booking.php" class="btn btn-primary mt-auto">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <div class="col-12">
+                <p class="text-center">No Rooms found.</p>
             </div>
-          </div>
-        </div>
-      <?php endwhile; ?>
-    <?php else: ?>
-      <p>No Rooms found.</p>
-    <?php endif; ?>
-  </div>
+        <?php endif; ?>
+    </div>
 </section>
 
 <footer id="footer" class="spacing text-center">

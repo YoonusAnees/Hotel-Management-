@@ -72,10 +72,10 @@ if (isset($_GET['query'])) {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="../main.php">Home</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="./rooms.php">Rooms</a></li>
+      <li class="nav-item active"><a class="nav-link" href="./rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
@@ -126,9 +126,9 @@ if (isset($_GET['query'])) {
   </div>
 </section>
 
+
 <!-- ========== Footer ========== -->
-<!-- ========== Footer ========== -->
-<footer id="footer" class="spacing text-center">
+<footer id="footer" class="">
   <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
   <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
   <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
