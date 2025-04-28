@@ -6,6 +6,35 @@
 
 
 
+
+/* Active nav link with a thicker underline */
+.nav-item.active .nav-link {
+    border-bottom: 3px solid #000; 
+    font-weight: bold; 
+    padding-bottom: 5px; /* Optional: Adjust spacing for better alignment */
+    position: relative;
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+}
+
+/* Interactive hover effect */
+.nav-item.active .nav-link:hover {
+    color: #333; 
+    border-bottom: 3px solid #333; 
+    padding-bottom: 7px; 
+}
+
+
+
+@media (max-width: 576px) {
+    .nav-item.active .nav-link {
+        border-bottom: 2px solid #000; /* Thinner underline for small devices */
+        font-size: 14px; /* Optional: Reduce font size on small screens */
+        border-width: 1; /* Remove default border width */
+        width: 10%; 
+      
+    }
+}
+
 .nav-bg-color{
     background-color: #706D54;
 }

@@ -55,11 +55,11 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="../main.php">Home</a>
       </li>
       <li class="nav-item"><a class="nav-link" href="./rooms.php">Rooms</a></li>
-      <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
+      <li class="nav-item active"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
     </ul>
