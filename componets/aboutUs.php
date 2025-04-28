@@ -55,12 +55,12 @@ $resultRoom = $connection->query($sqlRoom);
           <a class="nav-link" href="./contactUs.php">Contact Us</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0" action="./componets/search.php" method="GET">
+      <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
   <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
      </form>
 
-      <div class="auth ml-2">
+      <div class="auth-bg">
         <a href="../user/login.php"><button type="button" class="btn btn-dark">Login</button></a>
         <a href="../user/userRegistrstion.php"><button type="button" class="btn btn-dark">Registration</button></a>
       </div>

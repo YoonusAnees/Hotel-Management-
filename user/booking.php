@@ -93,26 +93,37 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
 
 <!-- Navbar -->
 <section id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-        <a class="navbar-brand" href="./main.php">Serenity</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="./main.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0 mr-3" action="./user-componets/search.php" method="GET">
-                <input class="form-control mr-sm-2 " type="search" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
-            <div class="user-info mr-1">Hello, <?php echo $_SESSION['Full_Name']; ?>!</div>
-            <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
-            </div>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
+  <a class="navbar-brand" href="main.php">Serenity</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#homeSection">Home</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
+    <div class="user-info">
+      Welcome, <?php echo $_SESSION['Full_Name']; ?>!
+      <div class="user-info-icon">
+        <a href="./bookingInformation.php"><i class="user-info-icon-color fas fa-info-circle"></i></a>
+      </div>
+    </div>
+    <div class="auth">
+      <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
+    </div>
+  </div>
+</nav>
 </section>
 
 <!-- Booking Form -->

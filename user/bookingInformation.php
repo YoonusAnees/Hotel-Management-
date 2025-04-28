@@ -47,45 +47,33 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
   <body  class="bg-body">
         <!--============================================== Navbar Section====================================================== -->
 
-<section id="navbar">
-<nav class="navbar navbar-expand-lg navbar-light  nav-bg-color">
-  <a class="navbar-brand" href="#">Serenity</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <section id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
+  <a class="navbar-brand" href="main.php">Serenity</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="./main.php ">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#homeSection">Home</a>
       </li>
-      
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#roomSections">Rooms</a>
-      </li> -->
-
-      <li class="nav-item">
-        <a class="nav-link" href="./user-componets/aboutUs.php">About Us</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-link " href="#">Services</a>
-      </li>
-     
-      <li class="nav-item">
-        <a class="nav-link " href="./user-componets/contactUs.php">Contact Us</a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
     </ul>
-   
-
+    <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
     <div class="user-info">
-   
-      Booking Infomations of , <?php echo $_SESSION['Full_Name']; ?>!
-      
+      Booking Inform, <?php echo $_SESSION['Full_Name']; ?>!
+     
     </div>
-
-    <div class="auth ">
-    <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
+    <div class="auth">
+      <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
     </div>
   </div>
 </nav>

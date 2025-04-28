@@ -48,7 +48,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 
 <section id="navbar">
 <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-  <a class="navbar-brand" href="../main.php">Serenity</a>
+  <a class="navbar-brand" href="main.php">Serenity</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -59,16 +59,22 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
         <a class="nav-link" href="../main.php">Home</a>
       </li>
       <li class="nav-item"><a class="nav-link" href="./rooms.php">Rooms</a></li>
-      <li class="nav-item"><a class="nav-link" href="aboutUs.php">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
     </ul>
+    <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-      <a href="../bookingInformation.php"><i class="fas fa-info-circle user-info-icon-color"></i></a>
+      <div class="user-info-icon">
+        <a href="../bookingInformation.php"><i class="user-info-icon-color fas fa-info-circle"></i></a>
+      </div>
     </div>
     <div class="auth">
-      <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
+      <button class="btn btn-dark" id="logoutBtn">Log out</button>
     </div>
   </div>
 </nav>
@@ -124,11 +130,11 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 </section>
 
 
-<footer id="footer" class="spacing text-center">
-  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin"></i></a>
-  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram"></i></a>
-  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+<footer id="footer" class="spacing text-center ">
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>

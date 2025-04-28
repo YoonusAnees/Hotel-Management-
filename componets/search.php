@@ -48,7 +48,7 @@ if (isset($_GET['query'])) {
         <li class="nav-item"><a class="nav-link" href="../componets/services.php">Services</a></li>
         <li class="nav-item"><a class="nav-link" href="../componets/contactUs.php">Contact Us</a></li>
       </ul>
-      <div class="auth ml-2">
+      <div class="auth-bg">
         <a href="../user/login.php" class="btn btn-dark">Login</a>
         <a href="../user/userRegistrstion.php" class="btn btn-dark">Registration</a>
       </div>

@@ -64,38 +64,37 @@ if (isset($_GET['query'])) {
 
 <!-- ========== Navbar Section ========== -->
 <section id="navbar">
-  <nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
-    <a class="navbar-brand" href="#">Serenity</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light nav-bg-color">
+  <a class="navbar-brand" href="main.php">Serenity</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="../main.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
-        <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
-        </ul>
-
-      
-      <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
-  <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0 mr-1" type="submit">Search</button>
-     </form>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="../main.php">Home</a>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="./rooms.php">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./aboutUs.php">About Us</a></li>
+      <li class="nav-item"><a class="nav-link" href="./services.php">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="./contactUs.php">Contact Us</a></li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="./search.php" method="GET">
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-     <div class="user-info-icon">
-     <a  href="../bookingInformation.php"><i class=" user-info-icon-color fas fa-info-circle "></i></a>
-     </div>
+      <div class="user-info-icon">
+        <a href="../bookingInformation.php"><i class="user-info-icon-color fas fa-info-circle"></i></a>
+      </div>
     </div>
     <div class="auth">
-    <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
+      <button class="btn btn-dark" id="logoutBtn">Log out</button>
     </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 </section>
 
 <section class="room-section container" id="roomSection">
@@ -128,17 +127,16 @@ if (isset($_GET['query'])) {
 </section>
 
 <!-- ========== Footer ========== -->
-<!-- <footer id="footer" class="text-center my-4"  >
-  <div>
-    <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin mx-2"></i></a>
-    <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github mx-2"></i></a>
-    <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram mx-2"></i></a>
-    <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope mx-2"></i></a>
-  </div>
+<!-- ========== Footer ========== -->
+<footer id="footer" class="spacing text-center">
+  <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
+  <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
+  <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>
+  <a href="mailto:yoonusanees2002@gmail.com"><i class="fa-solid fa-envelope icon-footer"></i></a>
   <div class="footer-info mt-2">
     ©2025 Developed and Designed by Yoonus Anees
   </div>
-</footer> -->
+</footer>
 
 <!-- JS Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
