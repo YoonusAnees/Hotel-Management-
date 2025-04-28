@@ -1,4 +1,8 @@
-<?php include("../db/dbconnect.php");
+<?php
+include("../db/dbconnect.php");
+
+// Start session
+session_start();
 
 // Check for database connection
 if (!$connection) {
@@ -17,26 +21,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$full_name', '$email', '$phone', '$rating', '$message')";
 
     if (mysqli_query($connection, $sql)) {
-      echo "<script>
-      Swal.fire({
-          title: 'Thank you!',
-          text: 'Thank you for your valuable review!',
-          icon: 'success',
-          confirmButtonText: 'OK'
-      
-      });
-  </script>";
+        $_SESSION['review_submitted'] = true; // Set success flag
+        header("Location: ".$_SERVER['PHP_SELF']); // Refresh page to prevent resubmission
+        exit();
     } else {
         echo "Error: " . mysqli_error($connection);
     }
 }
 
-
 // Fetch product data
 $sqlRoom = "SELECT * FROM tblrooms";
 $resultRoom = $connection->query($sqlRoom);
-
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -202,6 +199,17 @@ $resultRoom = $connection->query($sqlRoom);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"></script>
+  <?php if (isset($_SESSION['review_submitted']) && $_SESSION['review_submitted']): ?>
+<script>
+Swal.fire({
+    title: 'Thank you!',
+    text: 'Thank you for your valuable review!',
+    icon: 'success',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php unset($_SESSION['review_submitted']); endif; ?>
+
 <script src="../assets/js/app.js"></script>
 </body>
 </html>

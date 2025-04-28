@@ -76,6 +76,7 @@ if (isset($_POST["submit"])) {
     <div class="auth">
       <a href="./login.php"><button type="button" class="btn btn-dark">Login</button></a>
       <a href=""><button type="button" class="btn btn-dark">Registration</button></a>
+      
     </div>
   </div>
 </nav>
@@ -136,6 +137,7 @@ if (isset($_POST["submit"])) {
               </div>
 
               <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">Register</button>
+              <div class="acc-link"><a href="">Alredy Have an Account?</a></div>
             </form>
           </div>
         </div>

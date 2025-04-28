@@ -101,13 +101,14 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#homeSection">Home</a>
+      <li class="nav-item ">
+        <a class="nav-link" href="./main.php">Home</a>
       </li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
+      <li class="nav-item active"><a class="nav-link" href="./user-componets/contactUs.php">Bookings</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
       <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
@@ -167,7 +168,7 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
     </form>
 </section>
 
-<footer id="footer" style="margin-top:41px;">
+<footer id="footer" style="margin-top:111px;">
     <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
     <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
     <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>

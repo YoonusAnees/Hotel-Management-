@@ -3,10 +3,42 @@ include('../../db/dbconnect.php');
 include('../useContext/useContext.php');
 
 
-// Fetch rooms data
+
+
+// Check for database connection
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $phone = mysqli_real_escape_string($connection, $_POST['phone']);
+    $rating = intval($_POST['rating']);
+    $message = mysqli_real_escape_string($connection, $_POST['message']);
+
+    // Insert into database
+    $sql = "INSERT INTO tblreviews (full_name, email, phone, rating, message) 
+            VALUES ('$full_name', '$email', '$phone', '$rating', '$message')";
+
+    if (mysqli_query($connection, $sql)) {
+        $_SESSION['review_submitted'] = true; // Set success flag
+        header("Location: ".$_SERVER['PHP_SELF']); // Refresh page to prevent resubmission
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($connection);
+    }
+}
+
+// Fetch product data
 $sqlRoom = "SELECT * FROM tblrooms";
 $resultRoom = $connection->query($sqlRoom);
+
+$sqlReview = "SELECT * FROM tblreviews ORDER BY created_at DESC";
+$resultReview = mysqli_query($connection, $sqlReview);
+
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -74,8 +106,10 @@ $resultRoom = $connection->query($sqlRoom);
       <p><a href="mailto:"><i class="fa-solid fa-envelope mr-2 title-contactUs-icon"></i></a> serenityvilla@gmail.com</p>
      </div>
 
+      <div class="contact-info">
       <h5 class="mt-4">Business Hours</h5>
       <p>Monday - Sunday: 8 AM to 8 PM</p>
+      </div>
 
 
          <!-- Review Section -->
@@ -140,6 +174,41 @@ $resultRoom = $connection->query($sqlRoom);
   </div>
 </section>
 
+
+      <!--======================Customer Review======================= -->
+
+
+      <section class="container my-5">
+  <h2 class="text-center text-color mb-4">Guest Reviews</h2>
+
+  <div class="row">
+    <?php while ($row = mysqli_fetch_assoc($resultReview)) { ?>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm p-3 rounded">
+          <div class="card-body">
+            <h5 class="card-title mb-2"><?php echo htmlspecialchars($row['full_name']); ?></h5>
+            
+            <!-- Star Rating -->
+            <div class="mb-2">
+              <?php
+              $rating = (int) $row['rating'];
+              for ($i = 0; $i < $rating; $i++) {
+                  echo '<i class="fas fa-star text-warning"></i> ';
+              }
+              for ($i = $rating; $i < 5; $i++) {
+                  echo '<i class="far fa-star text-warning"></i> ';
+              }
+              ?>
+            </div>
+
+            <p class="card-text"><?php echo htmlspecialchars($row['message']); ?></p>
+            <small class="text-muted"><?php echo htmlspecialchars(date('d M Y', strtotime($row['created_at']))); ?></small>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
+  </div>
+</section>
  
 
 
@@ -166,6 +235,16 @@ $resultRoom = $connection->query($sqlRoom);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"></script>
+  <?php if (isset($_SESSION['review_submitted']) && $_SESSION['review_submitted']): ?>
+<script>
+Swal.fire({
+    title: 'Thank you!',
+    text: 'Thank you for your valuable review!',
+    icon: 'success',
+    confirmButtonText: 'OK'
+});
+</script>
+<?php unset($_SESSION['review_submitted']); endif; ?>
   <script src="../../assets/js/app.js"></script>
 
 </body>

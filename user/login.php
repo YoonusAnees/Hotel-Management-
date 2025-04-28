@@ -130,6 +130,10 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">Login</button>
+                            <div class="acc-link">
+                                <a href="userRegistrstion.php" class="text-center mt-3">Havent Account?</a>
+
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -138,7 +142,7 @@ if (isset($_POST['submit'])) {
     </div>
 </section>
 
-<footer id="footer" style="margin-top:189px">
+<footer id="footer" style="margin-top: 235px;">
     <a href="https://lk.linkedin.com/in/yoonus-anees-59b7b2302"><i class="fa-brands fa-linkedin icon-footer"></i></a>
     <a href="https://github.com/YoonusAnees"><i class="fa-brands fa-github icon-footer"></i></a>
     <a href="https://www.instagram.com/yoonus_anees/"><i class="fa-brands fa-instagram icon-footer"></i></a>

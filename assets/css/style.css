@@ -366,6 +366,70 @@
       height: 400px;
     }
   }
-  
+
+
+ 
+/* Mobile (Up to 576px) */
+@media (max-width: 576px) {
+    .title-contactUs {
+        font-size: 24px;
+        
+    }
+
+    .title-contactUslist  {
+        font-size: 14px;
+        
+    }
+
+    .review h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .map {
+        min-height: 300px;
+    }
+}
+
+/* Tablet (577px to 991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .title-contactUs {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .title-contactUslist p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .review h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .map {
+        min-height: 400px;
+    }
+}
+
+/* Desktop and Larger (992px and up) */
+@media (min-width: 992px) {
+    .title-contactUs {
+        font-size: 32px;
+    }
+
+    .title-contactUslist p {
+        font-size: 16px;
+    }
+
+    .review h2 {
+        font-size: 26px;
+    }
+
+    .map {
+        min-height: 500px;
+    }
+}
 
   
