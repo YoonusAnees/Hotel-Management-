@@ -24,10 +24,9 @@ This project is a full-stack room reservation system built with:
 - ✅ Users must be logged in to make a booking
 - ✅ Clean UI using Bootstrap
 - ✅ Alerts for invalid bookings or conflicts
+- ✅ Review Dynamic
 
-## 📁 Project Structure
 
-serenity-hotel/ │ ├── db/ # Database connection file ├── assets/ # CSS, images, etc. ├── booking/ # Booking logic and form │ └── bookRoom.php # Main booking form │ ├── login.php # Login form ├── logout.php # Logout script ├── main.php # Main landing page ├── bookingInformation.php # View bookings (User/Admin) └── README.md # This file
 
 markdown
 Copy
@@ -41,6 +40,7 @@ Edit
 - Bootstrap 4
 - JavaScript (vanilla)
 - Font Awesome Icons
+- -SweetAlert
 
 ## 🔐 Authentication
 
@@ -50,4 +50,4 @@ Users must be logged in to access the booking form. Sessions are used to manage 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/serenity-hotel.git
+   git clone https://github.com/YoonusAnees/Hotel-Management-.git
