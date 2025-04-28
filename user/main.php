@@ -1,7 +1,6 @@
 <?php
 include('../db/dbconnect.php');
 include('./useContext/useContext.php');
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -10,6 +9,9 @@ include('./useContext/useContext.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
+
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -29,23 +31,23 @@ include('./useContext/useContext.php');
       <li class="nav-item active">
         <a class="nav-link" href="#homeSection">Home</a>
       </li>
-      <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php"">Rooms</a></li>
+      <li class="nav-item"><a class="nav-link" href="./user-componets/rooms.php">Rooms</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/aboutUs.php">About Us</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/services.php">Services</a></li>
       <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="./user-componets/search.php" method="GET">
-  <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
-     </form>
+      <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit">Search</button>
+    </form>
     <div class="user-info">
       Welcome, <?php echo $_SESSION['Full_Name']; ?>!
-     <div class="user-info-icon">
-     <a  href="./bookingInformation.php"><i class=" user-info-icon-color fas fa-info-circle "></i></a>
-     </div>
+      <div class="user-info-icon">
+        <a href="./bookingInformation.php"><i class="user-info-icon-color fas fa-info-circle"></i></a>
+      </div>
     </div>
     <div class="auth">
-      <a href="../logout.php"><button class="btn btn-dark">Log out</button></a>
+      <button class="btn btn-dark" id="logoutBtn">Log out</button>
     </div>
   </div>
 </nav>
@@ -125,5 +127,8 @@ include('./useContext/useContext.php');
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="../assets/js/app.js"></script>
+
+
 </body>
 </html>

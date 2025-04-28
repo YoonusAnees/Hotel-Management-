@@ -1,5 +1,4 @@
-<?php
-include("../db/dbconnect.php");
+<?php include("../db/dbconnect.php");
 
 // Check for database connection
 if (!$connection) {
@@ -7,24 +6,29 @@ if (!$connection) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
-  $email = mysqli_real_escape_string($connection, $_POST['email']);
-  $phone = mysqli_real_escape_string($connection, $_POST['phone']);
-  $rating = intval($_POST['rating']);
-  $message = mysqli_real_escape_string($connection, $_POST['message']);
+    $full_name = mysqli_real_escape_string($connection, $_POST['full_name']);
+    $email = mysqli_real_escape_string($connection, $_POST['email']);
+    $phone = mysqli_real_escape_string($connection, $_POST['phone']);
+    $rating = intval($_POST['rating']);
+    $message = mysqli_real_escape_string($connection, $_POST['message']);
 
-  // Insert into database
-  $sql = "INSERT INTO tblreviews (full_name, email, phone, rating, message) 
-          VALUES ('$full_name', '$email', '$phone', '$rating', '$message')";
+    // Insert into database
+    $sql = "INSERT INTO tblreviews (full_name, email, phone, rating, message) 
+            VALUES ('$full_name', '$email', '$phone', '$rating', '$message')";
 
-  if (mysqli_query($connection, $sql)) {
-      // Redirect back or show success
-      echo "<script>alert('Thank you for your review!');</script>";
-  } else {
-      echo "Error: " . mysqli_error($connection);
-  }
-} else {
-  echo "Invalid Access!";
+    if (mysqli_query($connection, $sql)) {
+      echo "<script>
+      Swal.fire({
+          title: 'Thank you!',
+          text: 'Thank you for your valuable review!',
+          icon: 'success',
+          confirmButtonText: 'OK'
+      
+      });
+  </script>";
+    } else {
+        echo "Error: " . mysqli_error($connection);
+    }
 }
 
 
@@ -39,6 +43,7 @@ $resultRoom = $connection->query($sqlRoom);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="../assets/logo/s-solid.svg">
 
 
