@@ -52,6 +52,8 @@ if (isset($_GET['query'])) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <link rel="icon" type="image/x-icon" href="../../assets/logo/s-solid.svg">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
@@ -90,7 +92,7 @@ if (isset($_GET['query'])) {
      </div>
     </div>
     <div class="auth">
-      <a href="../../logout.php"><button class="btn btn-dark">Log out</button></a>
+    <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
     </div>
     </div>
   </nav>
@@ -142,6 +144,6 @@ if (isset($_GET['query'])) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-<script src="./assets/js/app.js"></script>
+<script src="../../assets/js/app.js"></script>
 </body>
 </html>

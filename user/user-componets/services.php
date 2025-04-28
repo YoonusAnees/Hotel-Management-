@@ -19,6 +19,8 @@ $resultRoom = $connection->query($sqlRoom);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Serenity</title>
   </head>
@@ -53,7 +55,7 @@ $resultRoom = $connection->query($sqlRoom);
      </div>
     </div>
     <div class="auth">
-      <a href="../../logout.php"><button class="btn btn-dark">Log out</button></a>
+    <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
     </div>
   </div>
 </nav>
@@ -151,6 +153,7 @@ $resultRoom = $connection->query($sqlRoom);
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
   crossorigin="anonymous"></script>
-<script src="../assets/js/app.js"></script>
+  <script src="../../assets/js/app.js"></script>
+
 </body>
 </html>

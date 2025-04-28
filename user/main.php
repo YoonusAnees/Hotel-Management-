@@ -47,7 +47,7 @@ include('./useContext/useContext.php');
       </div>
     </div>
     <div class="auth">
-      <button class="btn btn-dark" id="logoutBtn">Log out</button>
+      <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
     </div>
   </div>
 </nav>

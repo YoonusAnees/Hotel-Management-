@@ -14,6 +14,25 @@ document.addEventListener('DOMContentLoaded', function () {
               cancelButtonText: 'Cancel'
           }).then((result) => {
               if (result.isConfirmed) {
+                  window.location.href = '../../logout.php';
+              }
+          });
+      });
+  }
+
+
+  const logoutbtmain = document.getElementById('logoutBtn-main');
+  if (logoutbtmain) {
+    logoutbtmain.addEventListener('click', function () {
+          Swal.fire({
+              title: 'Are you sure?',
+              text: "Do you really want to log out?",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'Yes, log me out!',
+              cancelButtonText: 'Cancel'
+          }).then((result) => {
+              if (result.isConfirmed) {
                   window.location.href = '../logout.php';
               }
           });
@@ -41,4 +60,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
+
+
+
 

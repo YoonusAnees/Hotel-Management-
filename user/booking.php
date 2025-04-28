@@ -106,12 +106,12 @@ $roomDetailResult = mysqli_query($connection, "SELECT id, category, name, capaci
                 <li class="nav-item"><a class="nav-link" href="./user-componets/contactUs.php">Contact Us</a></li>
             </ul>
             <form class="form-inline my-2 my-lg-0 mr-3" action="./user-componets/search.php" method="GET">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <input class="form-control mr-sm-2 " type="search" placeholder="Search">
                 <button class="btn btn-success" type="submit">Search</button>
             </form>
-            <div class="user-info">Hello, <?php echo $_SESSION['Full_Name']; ?>!</div>
-            <div class="auth"><a href="../logout.php"><button class="btn btn-dark">Log out</button></a></div>
-        </div>
+            <div class="user-info mr-1">Hello, <?php echo $_SESSION['Full_Name']; ?>!</div>
+            <button class="btn btn-dark" id="logoutBtn-main">Log out</button>
+            </div>
     </nav>
 </section>
 

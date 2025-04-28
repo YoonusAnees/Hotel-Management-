@@ -38,6 +38,8 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
     <script src="https://kit.fontawesome.com/0e824faa16.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="../../assets/logo/s-solid.svg">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <link rel="stylesheet" href="../../assets/css/style.css">
     <title>Serenity Auth About Us</title>
@@ -66,7 +68,7 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
       <a href="../bookingInformation.php"><i class="fas fa-info-circle user-info-icon-color"></i></a>
     </div>
     <div class="auth">
-      <a href="../../logout.php"><button class="btn btn-dark btn-log-out">Log out</button></a>
+      <button class="btn btn-dark btn-log-out" id="logoutBtn">Log out</button>
     </div>
   </div>
 </nav>
@@ -135,5 +137,6 @@ if ($userResult && mysqli_num_rows($userResult) > 0) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="../../assets/js/app.js"></script>
 </body>
 </html>
