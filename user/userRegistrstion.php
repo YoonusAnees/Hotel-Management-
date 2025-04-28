@@ -89,7 +89,7 @@ if (isset($_POST["submit"])) {
             <h3 class="text-center mb-4">User Registration</h3>
 
             <?php
-            // Display SweetAlert message if email exists
+         
             if (isset($error_message)) {
                 echo "<script>
                     Swal.fire({
