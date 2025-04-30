@@ -61,6 +61,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('Password');
+    const toggleIcon = document.getElementById('togglePasswordIcon');
+
+    if (toggleBtn && passwordInput && toggleIcon) {
+        toggleBtn.addEventListener('click', function () {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            toggleIcon.classList.toggle('fa-eye');
+            toggleIcon.classList.toggle('fa-eye-slash');
+        });
+    }
+});
+
+
 
 
 
