@@ -52,6 +52,26 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Serenity</title>
+
+    <style>
+      .user-registration-login{
+    color: #000;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.user-registration-login a {
+    color: #0b132b;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.user-registration-login a:hover {
+    color: #333; /* Bootstrap primary color */
+    text-decoration: underline;
+}
+    </style>
 </head>
 <body class="bg-body">
 <header>
@@ -124,17 +144,30 @@ if (isset($_POST['submit'])) {
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label for="Password" class="font-weight-bold">Password</label>
                                 <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter your password" required>
-                            </div>
+                            </div> -->
+                            <div class="form-group">
+                          <label for="Password" class="font-weight-bold">Password</label>
+                           <div class="input-group">
+                           <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter your password" required>
+                        <div class="input-group-append">
+                           <span class="input-group-text" onclick="togglePasswordVisibility()" style="cursor: pointer;">
+                           <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                           </span>
+                                      </div>
+                                  </div>
+                               </div>
 
                             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">Login</button>
-                            <div class="acc-link">
+                           
+                        </form>
+
+                        <div class="user-registration-login">
                                 <a href="userRegistrstion.php" class="text-center mt-3">Havent Account?</a>
 
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -156,6 +189,22 @@ if (isset($_POST['submit'])) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+      function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('Password');
+    const toggleIcon = document.getElementById('togglePasswordIcon');
+    
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      toggleIcon.classList.remove('fa-eye');
+      toggleIcon.classList.add('fa-eye-slash');
+    } else {
+      passwordInput.type = 'password';
+      toggleIcon.classList.remove('fa-eye-slash');
+      toggleIcon.classList.add('fa-eye');
+    }
+  }
+</script>
 <script src="../assets/js/app.js"></script>
 </body>
 </html>

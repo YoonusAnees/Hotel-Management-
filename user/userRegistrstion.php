@@ -23,7 +23,8 @@ if (isset($_POST["submit"])) {
 
         if ($result) {
             // Redirect to login page on success
-            header("Location: login.php");
+            $success = true;
+            
         } else {
             echo "Failed to insert data";
             die(mysqli_error($connection));
@@ -48,6 +49,26 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>serenity</title>
+
+    <style>
+      .user-registration-login{
+    color: #000;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.user-registration-login a {
+    color: #0b132b;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.user-registration-login a:hover {
+    color: #333; /* Bootstrap primary color */
+    text-decoration: underline;
+}
+    </style>
   </head>
   <body class="bg-body">
 <header>
@@ -137,8 +158,12 @@ if (isset($_POST["submit"])) {
               </div>
 
               <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">Register</button>
-              <div class="acc-link"><a href="">Alredy Have an Account?</a></div>
+              
             </form>
+
+            <div class="user-registration-login"><a href="./login.php">Already Have an Account?</a></div>
+
+
           </div>
         </div>
       </div>
@@ -159,5 +184,19 @@ if (isset($_POST["submit"])) {
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<?php if (isset($success) && $success): ?>
+  <script>
+    Swal.fire({
+      title: 'Registration Successful!',
+      text: 'Thank you for registering. Redirecting to login...',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 3000
+    }).then(() => {
+      window.location.href = 'login.php';
+    });
+  </script>
+<?php endif; ?>
+
 </body>
 </html>

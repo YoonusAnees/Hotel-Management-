@@ -7,13 +7,13 @@
 
 
 
-/* Active nav link with a thicker underline */
+
 .nav-item.active .nav-link {
     border-bottom: 3px solid #000; 
     font-weight: bold; 
-    padding-bottom: 5px; /* Optional: Adjust spacing for better alignment */
+    padding-bottom: 5px; 
     position: relative;
-    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    transition: all 0.3s ease; 
 }
 
 /* Interactive hover effect */
@@ -22,10 +22,6 @@
     border-bottom: 3px solid #333; 
     padding-bottom: 7px; 
 }
-
-
-
-
 
 .nav-bg-color{
     background-color: #706D54;
@@ -260,176 +256,140 @@
    
 
 }
-/* @media (max-width: 576px) {
-  .auth  {
-    display: inline;
-    margin-left: -1px;
-  }
-}
 
-@media (min-width: 577px) and (max-width: 992px) {
-    .auth  {
-        display: inline;
-        margin-left: -1px;
-      }
-  } */
 
-  @media (max-width: 576px) {
+/* Responsive Media Queries */
+
+/* Small devices (phones, <= 576px) */
+@media (max-width: 576px) {
     .auth {
-        display: inline;
+        display: flex;
+        flex-direction: column;
         margin-left: 0;
-        margin-top: 5px;
+        margin-top: 10px;
+        align-items: center;
     }
+
     .user-info {
-        font-size: 14px;
-        margin-top: 5px;
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 8px;
     }
+
     .navbar-nav {
         text-align: center;
     }
+
+    .nav-item.active .nav-link {
+        border-bottom: 2px solid #000;
+        font-size: 0.9rem;
+        padding-bottom: 3px;
+    }
+
+    .btn-log-out {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .img-fluidd {
+        height: auto;
+        max-height: 300px;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.85rem;
+    }
+
+    .title-contactUs {
+        font-size: 1.5rem;
+    }
+
+    #reviewSection {
+        padding: 30px 15px;
+    }
+
+    .review {
+        max-width: 95%;
+    }
+
+    #footer {
+        padding: 15px;
+    }
+
+    #footer a {
+        font-size: 0.9rem;
+    }
 }
 
-
+/* Medium devices (tablets, 577px - 992px) */
 @media (min-width: 577px) and (max-width: 992px) {
     .auth {
-        display: inline;
-      
-    }
-    .user-info {
-        font-size: 16px;
-    }
-}
-
-@media (max-width: 576px) {
-    .nav-item.active .nav-link {
-        border-bottom: 2px solid #000; /* Thinner underline for small devices */
-        font-size: 14px; /* Optional: Reduce font size on small screens */
-        border-width: 1px; /* Remove default border width */
-     
-
-      
-    }
-}
-
-
-
-/* Small devices (phones) */
-
-  @media (max-width: 576px) {
-    .user-info {
         display: flex;
-        gap: 5px;
-        text-align: center;
-        font-size: medium;
-        
-        border-radius: 10%;
-      
-        
+        flex-direction: row;
+        align-items: center;
+        margin-left: 5px;
     }
-  }
 
-
-
-
-  
-
-
-  @media (max-width: 576px) {
-    .btn-log-out {
-        margin-top: 5px;
-        margin-left: -8px;
-        
+    .user-info {
+        font-size: 1rem;
+        gap: 10px;
     }
-  }
 
-
-/* Small devices (phones) */
-@media (max-width: 576px) {
     .img-fluidd {
-      width: 100%;
-      height: auto;
+        height: 350px;
     }
-  }
-  
-  /* Medium devices (tablets) */
-  @media (min-width: 577px) and (max-width: 992px) {
-    .img-fluidd {
-      width: 100%;
-      height: 400px;
-    }
-  }
-  
-  /* Large devices (laptops/desktops) */
-  @media (min-width: 993px) {
-    .img-fluidd {
-      width: 100%;
-      height: 400px;
-    }
-  }
 
+    .card-title {
+        font-size: 1.1rem;
+    }
 
- 
-/* Mobile (Up to 576px) */
-@media (max-width: 576px) {
+    .card-text {
+        font-size: 0.9rem;
+    }
+
     .title-contactUs {
-        font-size: 24px;
-        
+        font-size: 1.8rem;
     }
 
-    .title-contactUslist  {
-        font-size: 14px;
-        
+    #reviewSection {
+        padding: 40px 20px;
     }
 
-    .review h2 {
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .map {
-        min-height: 300px;
+    .review {
+        max-width: 90%;
     }
 }
 
-/* Tablet (577px to 991px) */
-@media (min-width: 577px) and (max-width: 991px) {
+/* Large devices (desktops, >= 993px) */
+@media (min-width: 993px) {
+    .auth {
+        margin-left: 15px;
+    }
+
+    .user-info {
+        font-size: 1.1rem;
+    }
+
+    .img-fluidd {
+        height: 400px;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .card-text {
+        font-size: 0.95rem;
+    }
+
     .title-contactUs {
-        font-size: 28px;
-        text-align: center;
-    }
-
-    .title-contactUslist p {
-        font-size: 15px;
-        text-align: center;
-    }
-
-    .review h2 {
-        font-size: 24px;
-        text-align: center;
-    }
-
-    .map {
-        min-height: 400px;
+        font-size: 2rem;
     }
 }
 
-/* Desktop and Larger (992px and up) */
-@media (min-width: 992px) {
-    .title-contactUs {
-        font-size: 32px;
-    }
-
-    .title-contactUslist p {
-        font-size: 16px;
-    }
-
-    .review h2 {
-        font-size: 26px;
-    }
-
-    .map {
-        min-height: 500px;
-    }
-}
 
   

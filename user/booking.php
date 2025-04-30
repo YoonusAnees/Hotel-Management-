@@ -196,7 +196,7 @@ if (isset($booking_success) && $booking_success): ?>
         timerProgressBar: true,
         showConfirmButton: false
     }).then(function() {
-        window.location.href = 'bookinginformation.php';
+        window.location.href = './bookinginformation.php';
     });
 </script>
 <?php elseif (isset($error_message)): ?>
